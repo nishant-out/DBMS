@@ -1,0 +1,268 @@
+1.
+
+
+2.
+
+
+3.
+show user;
+
+4.
+create table Employee ( name varchar2(6), salary number(6), empCode number(6) );
+
+5.
+describe employee;
+
+6.
+select * from employee;
+
+7.
+insert into employee (name, salary , empCode ) values ('Amit' , 30000, 101 );
+insert into employee (name, salary , empCode ) values ('Kapil' , 22000, 201 );
+insert into employee (name, salary , empCode ) values ('Rohit' , 45000, 301 );
+insert into employee (name, salary , empCode ) values ('Amit' , 27000, 401 );
+insert into employee (name, salary , empCode ) values ('Amit' , 27000, 401 );
+
+8.
+select * from employee;
+
+9.
+insert into employee (name, salary , empCode ) values ('Bhattacharya' ,33000, 901 );
+
+O/P: Error: ORA-12899: value too large for column "NISHANT"."EMPLOYEE"."NAME" (actual: 12,maximum: 6)
+
+10.
+describe employee;
+
+O/P:	VARCHAR2(6)
+
+11.
+
+alter table employee modify name varchar2( 25 );
+
+12.
+describe employee;
+
+13.
+select * from employee;
+
+14.
+insert into employee (name, salary , empCode ) values ('Bhattacharya' ,33000, 901 );
+
+15.
+select * from employee;
+
+16.
+alter table employee modify name varchar2( 5 );
+
+O/P: Error: cannot decrease column length because some value is too big
+
+17.
+commit;
+select * from employee;
+
+18.
+
+a)
+
+NAME
+---------------------------------------------------------------------------
+Amit
+Kapil
+Rohit
+Amit
+Amit
+Bhattacharya
+
+6 rows selected.
+
+
+b)
+
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+Amit
+Amit
+Amit
+Amit
+
+
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+Kapil
+Kapil
+Kapil
+Kapil
+
+
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+Rohit
+Rohit
+Rohit
+Rohit
+
+
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+Amit
+Amit
+Amit
+Amit
+
+
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+Amit
+Amit
+Amit
+Amit
+
+
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+NAME
+---------------------------------------------------------------------------
+Bhattacharya
+Bhattacharya
+Bhattacharya
+Bhattacharya
+
+
+6 rows selected.
+
+
+c)
+
+NAME
+---------------------------------------------------------------------------
+   EMPCODE
+----------
+Kapil
+       201
+
+Amit
+       401
+
+Amit
+       401
+
+
+NAME
+---------------------------------------------------------------------------
+   EMPCODE
+----------
+Amit
+       101
+
+Bhattacharya
+       901
+
+Rohit
+       301
+
+
+6 rows selected.
+
+
+d)
+
+NAME
+---------------------------------------------------------------------------
+    SALARY SALARY+500 SALARY-50000
+---------- ---------- ------------
+Amit
+     30000	30500	    -20000
+
+Kapil
+     22000	22500	    -28000
+
+Rohit
+     45000	45500	     -5000
+
+
+NAME
+---------------------------------------------------------------------------
+    SALARY SALARY+500 SALARY-50000
+---------- ---------- ------------
+Amit
+     27000	27500	    -23000
+
+Amit
+     27000	27500	    -23000
+
+Bhattacharya
+     33000	33500	    -17000
+
+
+6 rows selected.
+
+
+e)
+
+SUM(SALARY)
+-----------
+     184000
+
+
+f)
+
+MIN(SALARY)
+-----------
+      22000
+
+
+g)
+
+MAX(SALARY)
+-----------
+      45000
+
+19.
+create table NewEmp as select * from employee;
+
+create table NewEmp LIKE employee;
+
+insert into NewEmp select * from employee;
+
+
+
+
+
+
+
+
